@@ -5,28 +5,30 @@
 //  Created by Daniel Ilin on 20.12.2021.
 //
 
-import Foundation
 import UIKit
 
-class HighlightButton: UIButton {
+// MARK: - AnimatedButton
+
+class AnimatedButton: UIButton {
     override var isHighlighted: Bool {
             didSet {
-                
-                animateButtonTapped(currentAnimation: .released)
-                
                 if isHighlighted {
+                    animateButtonTapped(currentAnimation: .pushedDown)
                     self.alpha = 0.3
                 } else {
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()                    
+                    animateButtonTapped(currentAnimation: .released)
                     self.alpha = 1
                 }
             }
         }
 }
 
-extension UIView {
-    
-    func animateButtonTapped(currentAnimation: AnimationCase) {
-        
+// MARK: - AnimateButtonTapped
+
+extension AnimatedButton {
+    func animateButtonTapped(currentAnimation: AnimationCase) {        
         UIView.animate(withDuration: 0.1, delay: 0, options: [],
                        animations: {
             switch currentAnimation {

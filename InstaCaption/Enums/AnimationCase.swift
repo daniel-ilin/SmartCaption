@@ -5,4 +5,7 @@
 //  Created by Daniel Ilin on 20.12.2021.
 //
 
-import Foundation
+enum AnimationCase: Int {
+    case pushedDown = 1
+    case released = 0
+}
