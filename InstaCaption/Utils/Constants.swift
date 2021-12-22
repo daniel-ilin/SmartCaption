@@ -1,0 +1,4 @@
+let TAG_API_USERNAME = "acc_1d3aba46a45440b"
+let TAG_API_PASSWORD = "d4f09519f776be69a95c5b2377c8ca6a"
+
+

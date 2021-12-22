@@ -16,8 +16,6 @@ class AnimatedButton: UIButton {
                     animateButtonTapped(currentAnimation: .pushedDown)
                     self.alpha = 0.3
                 } else {
-                    let generator = UIImpactFeedbackGenerator(style: .medium)
-                    generator.impactOccurred()                    
                     animateButtonTapped(currentAnimation: .released)
                     self.alpha = 1
                 }
@@ -35,6 +33,7 @@ extension AnimatedButton {
             case .pushedDown:
                 self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             case .released:
+                
                 self.transform = .identity
             }
         })

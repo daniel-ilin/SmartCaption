@@ -12,17 +12,20 @@
 		65566CCB27702E07006C4272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65566CCA27702E07006C4272 /* Assets.xcassets */; };
 		65566CCE27702E07006C4272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65566CCC27702E07006C4272 /* LaunchScreen.storyboard */; };
 		65566CDD27702FD7006C4272 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CDC27702FD7006C4272 /* JGProgressHUD */; };
-		65566CE02770333D006C4272 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CDF2770333D006C4272 /* FirebaseDatabase */; };
-		65566CE22770333D006C4272 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CE12770333D006C4272 /* FirebaseFirestore */; };
-		65566CE42770333D006C4272 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CE32770333D006C4272 /* FirebaseMessaging */; };
-		65566CE62770333D006C4272 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CE52770333D006C4272 /* FirebaseStorage */; };
-		65566CE82770337A006C4272 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65566CE72770337A006C4272 /* GoogleService-Info.plist */; };
 		65566CEA27703413006C4272 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CE927703413006C4272 /* Extensions.swift */; };
 		65566CEC277040F3006C4272 /* ValidityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CEB277040F3006C4272 /* ValidityViewModel.swift */; };
 		65566CEE2770491F006C4272 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CED2770491F006C4272 /* AnimatedButton.swift */; };
 		65566CF327704997006C4272 /* AnimationCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CF227704997006C4272 /* AnimationCase.swift */; };
 		65566CF8277053AC006C4272 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CF7277053AC006C4272 /* CropViewController */; };
 		65566CFA27705E48006C4272 /* OpaqueOrNotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CF927705E48006C4272 /* OpaqueOrNotButton.swift */; };
+		65566CFC2770E23C006C4272 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CFB2770E23C006C4272 /* ImageUploader.swift */; };
+		65B9F5C8277190FD007D7F4F /* TaggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5C7277190FD007D7F4F /* TaggingService.swift */; };
+		65B9F5CA2772202A007D7F4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5C92772202A007D7F4F /* Constants.swift */; };
+		65B9F5CE2772909E007D7F4F /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5CD2772909E007D7F4F /* ImageData.swift */; };
+		65B9F5D22772A91D007D7F4F /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D12772A91D007D7F4F /* ResponseData.swift */; };
+		65B9F5D82772D041007D7F4F /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */; };
+		65B9F5DA2772D3FE007D7F4F /* MyJsonDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */; };
+		65B9F5DC2772DFDC007D7F4F /* ImageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +35,19 @@
 		65566CCA27702E07006C4272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65566CCD27702E07006C4272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65566CCF27702E07006C4272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65566CE72770337A006C4272 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65566CE927703413006C4272 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65566CEB277040F3006C4272 /* ValidityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityViewModel.swift; sourceTree = "<group>"; };
 		65566CED2770491F006C4272 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		65566CF227704997006C4272 /* AnimationCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCase.swift; sourceTree = "<group>"; };
 		65566CF927705E48006C4272 /* OpaqueOrNotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueOrNotButton.swift; sourceTree = "<group>"; };
+		65566CFB2770E23C006C4272 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		65B9F5C7277190FD007D7F4F /* TaggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggingService.swift; sourceTree = "<group>"; };
+		65B9F5C92772202A007D7F4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		65B9F5CD2772909E007D7F4F /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		65B9F5D12772A91D007D7F4F /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJsonDecode.swift; sourceTree = "<group>"; };
+		65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65566CE42770333D006C4272 /* FirebaseMessaging in Frameworks */,
-				65566CE02770333D006C4272 /* FirebaseDatabase in Frameworks */,
 				65566CDD27702FD7006C4272 /* JGProgressHUD in Frameworks */,
-				65566CE62770333D006C4272 /* FirebaseStorage in Frameworks */,
-				65566CE22770333D006C4272 /* FirebaseFirestore in Frameworks */,
 				65566CF8277053AC006C4272 /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +92,6 @@
 				65566CCA27702E07006C4272 /* Assets.xcassets */,
 				65566CCC27702E07006C4272 /* LaunchScreen.storyboard */,
 				65566CCF27702E07006C4272 /* Info.plist */,
-				65566CE72770337A006C4272 /* GoogleService-Info.plist */,
 			);
 			path = InstaCaption;
 			sourceTree = "<group>";
@@ -103,6 +108,9 @@
 		65566CD627702E73006C4272 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				65B9F5CD2772909E007D7F4F /* ImageData.swift */,
+				65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */,
+				65B9F5D12772A91D007D7F4F /* ResponseData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +136,8 @@
 			children = (
 				65566CC127702E04006C4272 /* AppDelegate.swift */,
 				65566CE927703413006C4272 /* Extensions.swift */,
+				65B9F5C92772202A007D7F4F /* Constants.swift */,
+				65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -135,6 +145,9 @@
 		65566CDA27702E9A006C4272 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				65566CFB2770E23C006C4272 /* ImageUploader.swift */,
+				65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */,
+				65B9F5C7277190FD007D7F4F /* TaggingService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -165,10 +178,6 @@
 			name = InstaCaption;
 			packageProductDependencies = (
 				65566CDC27702FD7006C4272 /* JGProgressHUD */,
-				65566CDF2770333D006C4272 /* FirebaseDatabase */,
-				65566CE12770333D006C4272 /* FirebaseFirestore */,
-				65566CE32770333D006C4272 /* FirebaseMessaging */,
-				65566CE52770333D006C4272 /* FirebaseStorage */,
 				65566CF7277053AC006C4272 /* CropViewController */,
 			);
 			productName = InstaCaption;
@@ -201,7 +210,6 @@
 			mainGroup = 65566CB527702E04006C4272;
 			packageReferences = (
 				65566CDB27702FD7006C4272 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
-				65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				65566CF6277053AC006C4272 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 65566CBF27702E04006C4272 /* Products */;
@@ -219,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65566CCE27702E07006C4272 /* LaunchScreen.storyboard in Resources */,
-				65566CE82770337A006C4272 /* GoogleService-Info.plist in Resources */,
 				65566CCB27702E07006C4272 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,13 +238,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B9F5DA2772D3FE007D7F4F /* MyJsonDecode.swift in Sources */,
 				65566CEC277040F3006C4272 /* ValidityViewModel.swift in Sources */,
 				65566CFA27705E48006C4272 /* OpaqueOrNotButton.swift in Sources */,
 				65566CEE2770491F006C4272 /* AnimatedButton.swift in Sources */,
 				65566CF327704997006C4272 /* AnimationCase.swift in Sources */,
 				65566CC627702E04006C4272 /* ViewController.swift in Sources */,
+				65B9F5DC2772DFDC007D7F4F /* ImageTag.swift in Sources */,
+				65B9F5D82772D041007D7F4F /* MultipartFormDataRequest.swift in Sources */,
+				65B9F5CA2772202A007D7F4F /* Constants.swift in Sources */,
+				65566CFC2770E23C006C4272 /* ImageUploader.swift in Sources */,
 				65566CEA27703413006C4272 /* Extensions.swift in Sources */,
+				65B9F5D22772A91D007D7F4F /* ResponseData.swift in Sources */,
 				65566CC227702E04006C4272 /* AppDelegate.swift in Sources */,
+				65B9F5C8277190FD007D7F4F /* TaggingService.swift in Sources */,
+				65B9F5CE2772909E007D7F4F /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,14 +476,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		65566CF6277053AC006C4272 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
@@ -484,26 +491,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65566CDB27702FD7006C4272 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
-		};
-		65566CDF2770333D006C4272 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		65566CE12770333D006C4272 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		65566CE32770333D006C4272 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		65566CE52770333D006C4272 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65566CDE2770333D006C4272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
 		};
 		65566CF7277053AC006C4272 /* CropViewController */ = {
 			isa = XCSwiftPackageProductDependency;

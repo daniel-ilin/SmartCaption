@@ -7,6 +7,7 @@
 
 import UIKit
 import TOCropViewController
+import JGProgressHUD
 
 class ViewController: UIViewController {
 
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
     }()
     
     private let tapUploadPhoto: UIButton = {
-        let button = UIButton()
+        let button = AnimatedButton()
         button.contentMode = .scaleAspectFill
         button.tintColor = .white
         
@@ -127,6 +128,30 @@ class ViewController: UIViewController {
         pickerController.modalPresentationStyle = .fullScreen
         present(pickerController, animated: true, completion: nil)
     }
+    
+    func requestTags(forId id: String) {
+        TaggingService.getTagsForImageId(id) { imageTags in
+            DispatchQueue.main.sync {
+                self.showLoader(false)
+                self.filterImageTags(imageTags)
+            }
+        }
+    }
+    
+    func filterImageTags(_ data: ImageData) -> [ImageTag] {
+        
+        let allTags = data.result.tags
+        var newTags = [ImageTag]()
+        if allTags.count > 5 {
+            let shortList = allTags[0...4]
+            newTags = shortList.map {ImageTag(imageTag: $0.tag.en)}
+        } else {
+            newTags = allTags.map{ImageTag(imageTag: $0.tag.en)}
+        }
+        
+        print("DEBUG: Filtered tags are - \(newTags)")
+        return newTags
+    }
 
 //    MARK: - Actions
     
@@ -135,7 +160,15 @@ class ViewController: UIViewController {
     }
     
     @objc func submitImage() {
-        print("DEBUG: Submitted the image!")
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        guard selectedImage == selectedImage else { return }
+        
+        ImageUploader.uploadImage(selectedImage!) { id in
+            self.requestTags(forId: id)
+        }
+        
+        showLoader(true)
     }
 
 }
