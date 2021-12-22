@@ -10,8 +10,10 @@ import TOCropViewController
 import JGProgressHUD
 
 class ViewController: UIViewController {
-
-//    MARK: - Properties
+    
+    //    MARK: - Properties
+    
+    private var selectedImageTags = [ImageTag]()
     
     private var selectedImage: UIImage? {
         didSet {
@@ -19,12 +21,82 @@ class ViewController: UIViewController {
         }
     }
     
+    private var flipButton: UIButton = {
+        let button = AnimatedButton()
+        button.contentMode = .scaleAspectFill
+        button.tintColor = .white
+        
+        let largeTitle = UIImage.SymbolConfiguration(pointSize: 20)
+        let black = UIImage.SymbolConfiguration(weight: .regular)
+        let config = largeTitle.applying(black)
+        
+        button.setImage(UIImage(systemName: "arrow.2.squarepath", withConfiguration: config), for: .normal)
+        button.addTarget(self, action: #selector(flipMainViews), for: .touchUpInside)
+        button.isEnabled = false
+        button.isHidden = true
+        return button
+    }()
+    
     private var selectedImageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .clear
         iv.layer.cornerRadius = 15
+        return iv
+    }()
+    
+    private var tagsTitle: UILabel = {
+        let label = UILabel()
+        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 1), .font: UIFont.boldSystemFont(ofSize: 36)]
+        let attributedText = NSAttributedString(string: "Tags", attributes: atts)
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    private var quoteTitle: UILabel = {
+        let label = UILabel()
+        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 1), .font: UIFont.boldSystemFont(ofSize: 36)]
+        let attributedText = NSAttributedString(string: "Quote", attributes: atts)
+        label.isHidden = true
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    private var quoteLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 10
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.text = "• coming soon"
+        label.isHidden = true
+        label.textColor = .white
+        return label
+    }()
+    
+    private var tagsListLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 10
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.text = "No tags found"
+        label.textColor = .white
+        return label
+    }()
+    
+    private var selectedImageContainer: UIView = {
+        let v = UIView()
+        v.isHidden = true
+        v.clipsToBounds = true
+        return v
+    }()
+    
+    private var imageTagView: UIView = {
+        let iv = UIView()
+        iv.clipsToBounds = true
+        iv.isHidden = true
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .clear
+        iv.layer.cornerRadius = 15
+        iv.backgroundColor = UIColor(white: 1, alpha: 0.15)
         return iv
     }()
     
@@ -73,7 +145,7 @@ class ViewController: UIViewController {
         return button
     }()
     
-//    MARK: - Lifecycle
+    //    MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +153,7 @@ class ViewController: UIViewController {
         configureUI()
     }
     
-//    MARK: - Helpers
+    //    MARK: - Helpers
     
     func configureUI() {
         view.addSubview(tapUploadPhoto)
@@ -94,12 +166,35 @@ class ViewController: UIViewController {
         view.addSubview(submitButton)
         submitButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 25, paddingBottom: 100, paddingRight: 25)
         
-        view.addSubview(selectedImageView)
-        selectedImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: submitButton.leftAnchor, bottom: submitButton.topAnchor, right: submitButton.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 125, paddingRight: 0)
+        
+        view.addSubview(selectedImageContainer)
+        selectedImageContainer.addSubview(selectedImageView)
+        selectedImageContainer.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: submitButton.leftAnchor, bottom: submitButton.topAnchor, right: submitButton.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 125, paddingRight: 0)
+        selectedImageView.anchor(top: selectedImageContainer.topAnchor, left: selectedImageContainer.leftAnchor, bottom: selectedImageContainer.bottomAnchor, right: selectedImageContainer.rightAnchor)
+        
         
         view.addSubview(changePhotoButton)
         changePhotoButton.centerX(inView: view)
-        changePhotoButton.anchor(top: selectedImageView.bottomAnchor, paddingTop: 10)
+        changePhotoButton.anchor(top: selectedImageContainer.bottomAnchor, paddingTop: 10)
+        
+        view.addSubview(imageTagView)
+        imageTagView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: submitButton.leftAnchor, bottom: submitButton.topAnchor, right: submitButton.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 125, paddingRight: 0)
+        
+        imageTagView.addSubview(tagsTitle)
+        tagsTitle.anchor(top: imageTagView.topAnchor, left: imageTagView.leftAnchor, paddingTop: 18, paddingLeft: 18)
+        
+        imageTagView.addSubview(tagsListLabel)
+        tagsListLabel.anchor(top: tagsTitle.bottomAnchor, left: imageTagView.leftAnchor, paddingTop: 10, paddingLeft: 20)
+        
+        imageTagView.addSubview(quoteTitle)
+        quoteTitle.anchor(top: tagsListLabel.bottomAnchor, left: imageTagView.leftAnchor, paddingTop: 18, paddingLeft: 18)
+        
+        imageTagView.addSubview(quoteLabel)
+        quoteLabel.anchor(top: quoteTitle.bottomAnchor, left: imageTagView.leftAnchor, paddingTop: 10, paddingLeft: 20)
+        
+        view.addSubview(flipButton)
+        flipButton.centerX(inView: view)
+        flipButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 5)
         
     }
     
@@ -109,6 +204,9 @@ class ViewController: UIViewController {
         submitButton.backgroundColor = buttonViewModel.buttonBackgroundColor
         submitButton.setTitleColor(buttonViewModel.buttonTitleColor, for: .normal)
         submitButton.isEnabled = buttonViewModel.formIsValid
+        flipButton.isEnabled = buttonViewModel.formIsValid
+        flipButton.isHidden = !buttonViewModel.formIsValid
+        selectedImageContainer.isHidden = false
         
         let imageViewModel = ImageViewModel(image: selectedImage!)
         selectedImageView.image = selectedImage
@@ -133,7 +231,9 @@ class ViewController: UIViewController {
         TaggingService.getTagsForImageId(id) { imageTags in
             DispatchQueue.main.sync {
                 self.showLoader(false)
-                self.filterImageTags(imageTags)
+                self.selectedImageTags.removeAll()
+                self.selectedImageTags = self.filterImageTags(imageTags)
+                self.showTagsToUser()
             }
         }
     }
@@ -149,14 +249,56 @@ class ViewController: UIViewController {
             newTags = allTags.map{ImageTag(imageTag: $0.tag.en)}
         }
         
-        print("DEBUG: Filtered tags are - \(newTags)")
         return newTags
     }
-
-//    MARK: - Actions
+    
+    func flip() {
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        
+        flipButton.isEnabled = false
+        
+        if imageTagView.isHidden {
+            UIView.transition(with: selectedImageContainer, duration: 1.0, options: transitionOptions, animations: {
+                self.selectedImageContainer.alpha = 0
+                self.selectedImageContainer.isHidden = true
+                self.flipButton.isEnabled = true
+            })
+            
+            UIView.transition(with: imageTagView, duration: 1.0, options: transitionOptions, animations: {
+                self.imageTagView.alpha = 1
+                self.imageTagView.isHidden = false
+                self.flipButton.isEnabled = true
+            })
+        } else {
+            UIView.transition(with: selectedImageContainer, duration: 1.0, options: transitionOptions, animations: {
+                self.selectedImageContainer.alpha = 1
+                self.selectedImageContainer.isHidden = false
+                self.flipButton.isEnabled = true
+            })
+            
+            UIView.transition(with: imageTagView, duration: 1.0, options: transitionOptions, animations: {
+                self.imageTagView.alpha = 0
+                self.imageTagView.isHidden = true
+                self.flipButton.isEnabled = true
+            })
+        }
+    }
+    
+    func showTagsToUser() {
+        tagsListLabel.text = ""
+        for tag in selectedImageTags {
+            tagsListLabel.text?.append("• \(tag.imageTag)\r")
+        }
+        
+        quoteTitle.isHidden = false
+        quoteLabel.isHidden = false
+        if self.imageTagView.isHidden { self.flip() }
+    }
+    
+    //    MARK: - Actions
     
     @objc func handleTapToSelectPhoto() {
-        showImagePicker()        
+        showImagePicker()
     }
     
     @objc func submitImage() {
@@ -170,7 +312,11 @@ class ViewController: UIViewController {
         
         showLoader(true)
     }
-
+    
+    @objc func flipMainViews() {
+        flip()
+    }
+    
 }
 
 
@@ -199,7 +345,10 @@ extension ViewController: TOCropViewControllerDelegate {
     
     func cropViewController(_ cropViewController: TOCropViewController, didCropTo image: UIImage, with cropRect: CGRect, angle: Int) {
         selectedImage = image
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            if !self.imageTagView.isHidden { self.flip() }
+            self.tagsListLabel.text = "No tags found"
+        }
     }
     
 }

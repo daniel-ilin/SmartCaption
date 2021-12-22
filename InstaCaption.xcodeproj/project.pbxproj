@@ -24,7 +24,7 @@
 		65B9F5CE2772909E007D7F4F /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5CD2772909E007D7F4F /* ImageData.swift */; };
 		65B9F5D22772A91D007D7F4F /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D12772A91D007D7F4F /* ResponseData.swift */; };
 		65B9F5D82772D041007D7F4F /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */; };
-		65B9F5DA2772D3FE007D7F4F /* MyJsonDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */; };
+		65B9F5DA2772D3FE007D7F4F /* MyJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5D92772D3FE007D7F4F /* MyJsonDecoder.swift */; };
 		65B9F5DC2772DFDC007D7F4F /* ImageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,7 @@
 		65B9F5CD2772909E007D7F4F /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		65B9F5D12772A91D007D7F4F /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
-		65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJsonDecode.swift; sourceTree = "<group>"; };
+		65B9F5D92772D3FE007D7F4F /* MyJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJsonDecoder.swift; sourceTree = "<group>"; };
 		65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +137,7 @@
 				65566CC127702E04006C4272 /* AppDelegate.swift */,
 				65566CE927703413006C4272 /* Extensions.swift */,
 				65B9F5C92772202A007D7F4F /* Constants.swift */,
-				65B9F5D92772D3FE007D7F4F /* MyJsonDecode.swift */,
+				65B9F5D92772D3FE007D7F4F /* MyJsonDecoder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B9F5DA2772D3FE007D7F4F /* MyJsonDecode.swift in Sources */,
+				65B9F5DA2772D3FE007D7F4F /* MyJsonDecoder.swift in Sources */,
 				65566CEC277040F3006C4272 /* ValidityViewModel.swift in Sources */,
 				65566CFA27705E48006C4272 /* OpaqueOrNotButton.swift in Sources */,
 				65566CEE2770491F006C4272 /* AnimatedButton.swift in Sources */,
