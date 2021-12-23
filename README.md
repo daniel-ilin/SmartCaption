@@ -9,7 +9,7 @@
 <!-- ![GIF](https://i.imgur.com/C9Jdfak.gif) -->
 <img src="https://camo.githubusercontent.com/747d8d30432ffce02e453dcec913d4c7ed10ce6c8c0bd1751c8bb87b29b14cb0/68747470733a2f2f692e696d6775722e636f6d2f43394a6466616b2e676966" data-canonical-src="https://i.imgur.com/C9Jdfak.gif" width="200" height="400" />
 
-### Get image descriptive tags and fitting captions
+### Get image related tags and fitting captions
 
 
 <p float="left">
