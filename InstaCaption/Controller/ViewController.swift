@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     //    MARK: - Properties
     
     private var selectedImageTags = [ImageTag]()
+    private var allImageTags = [ImageTag]()
+    private var selectedQuote: Quote?
+    
     
     private var selectedImage: UIImage? {
         didSet {
@@ -67,6 +70,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 10
         label.font = UIFont.systemFont(ofSize: 24)
+        label.adjustsFontSizeToFitWidth = true
         label.text = "• coming soon"
         label.isHidden = true
         label.textColor = .white
@@ -155,7 +159,7 @@ class ViewController: UIViewController {
     
     //    MARK: - Helpers
     
-    func configureUI() {
+    private func configureUI() {
         view.addSubview(tapUploadPhoto)
         tapUploadPhoto.centerX(inView: view)
         tapUploadPhoto.anchor(bottom: view.centerYAnchor, paddingBottom: -10)
@@ -190,7 +194,7 @@ class ViewController: UIViewController {
         quoteTitle.anchor(top: tagsListLabel.bottomAnchor, left: imageTagView.leftAnchor, paddingTop: 18, paddingLeft: 18)
         
         imageTagView.addSubview(quoteLabel)
-        quoteLabel.anchor(top: quoteTitle.bottomAnchor, left: imageTagView.leftAnchor, paddingTop: 10, paddingLeft: 20)
+        quoteLabel.anchor(top: quoteTitle.bottomAnchor, left: imageTagView.leftAnchor, right: imageTagView.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingRight: 20)
         
         view.addSubview(flipButton)
         flipButton.centerX(inView: view)
@@ -198,7 +202,7 @@ class ViewController: UIViewController {
         
     }
     
-    func handleImageChanged() {
+    private func handleImageChanged() {
         guard selectedImage != nil else { return }
         let buttonViewModel = ButtonViewModel(image: selectedImage!)
         submitButton.backgroundColor = buttonViewModel.buttonBackgroundColor
@@ -217,7 +221,7 @@ class ViewController: UIViewController {
         changePhotoButton.isHidden = !buttonViewModel.formIsValid
     }
     
-    func showImagePicker() {
+    private func showImagePicker() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.allowsEditing = false
@@ -227,18 +231,28 @@ class ViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
-    func requestTags(forId id: String) {
+    private func requestTags(forId id: String) {
         TaggingService.getTagsForImageId(id) { imageTags in
-            DispatchQueue.main.sync {
-                self.showLoader(false)
+                
+                self.allImageTags.removeAll()
+                self.allImageTags = self.getAllTags(imageTags)
+                
                 self.selectedImageTags.removeAll()
                 self.selectedImageTags = self.filterImageTags(imageTags)
-                self.showTagsToUser()
-            }
+                
+//                Search for the quote
+            QuoteService.getQuotesForTags(self.allImageTags) { quote in
+                    self.selectedQuote = Quote(quoteText: quote.quoteText, author: quote.author)                    
+                    print("DEBUG: Got the quote - \(self.selectedQuote!.quoteText) by \(self.selectedQuote!.author)")
+                    DispatchQueue.main.async {
+                        self.showLoader(false)
+                        self.showTagsToUser()
+                    }
+                }
         }
     }
     
-    func filterImageTags(_ data: ImageData) -> [ImageTag] {
+    private func filterImageTags(_ data: ImageData) -> [ImageTag] {
         
         let allTags = data.result.tags
         var newTags = [ImageTag]()
@@ -252,6 +266,12 @@ class ViewController: UIViewController {
         return newTags
     }
     
+    private func getAllTags(_ data: ImageData) -> [ImageTag] {
+        let allTags = data.result.tags
+        let newTags = allTags.map {ImageTag(imageTag: $0.tag.en)}
+        return newTags
+    }
+    
     func flip() {
         let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
@@ -261,26 +281,30 @@ class ViewController: UIViewController {
             UIView.transition(with: selectedImageContainer, duration: 1.0, options: transitionOptions, animations: {
                 self.selectedImageContainer.alpha = 0
                 self.selectedImageContainer.isHidden = true
+            }) { _ in
                 self.flipButton.isEnabled = true
-            })
+            }
             
             UIView.transition(with: imageTagView, duration: 1.0, options: transitionOptions, animations: {
                 self.imageTagView.alpha = 1
-                self.imageTagView.isHidden = false
+                self.imageTagView.isHidden = false                
+            }) { _ in
                 self.flipButton.isEnabled = true
-            })
+            }
         } else {
             UIView.transition(with: selectedImageContainer, duration: 1.0, options: transitionOptions, animations: {
                 self.selectedImageContainer.alpha = 1
                 self.selectedImageContainer.isHidden = false
+            }) { _ in
                 self.flipButton.isEnabled = true
-            })
+            }
             
             UIView.transition(with: imageTagView, duration: 1.0, options: transitionOptions, animations: {
                 self.imageTagView.alpha = 0
                 self.imageTagView.isHidden = true
+            }) { _ in
                 self.flipButton.isEnabled = true
-            })
+            }
         }
     }
     
@@ -292,7 +316,12 @@ class ViewController: UIViewController {
         
         quoteTitle.isHidden = false
         quoteLabel.isHidden = false
+        quoteLabel.text = selectedQuote?.quoteText
         if self.imageTagView.isHidden { self.flip() }
+        
+        NSLayoutConstraint.activate([
+            quoteLabel.bottomAnchor.constraint(lessThanOrEqualTo: imageTagView.bottomAnchor, constant: -20)
+            ])
     }
     
     //    MARK: - Actions

@@ -19,6 +19,9 @@
 		65566CF8277053AC006C4272 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 65566CF7277053AC006C4272 /* CropViewController */; };
 		65566CFA27705E48006C4272 /* OpaqueOrNotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CF927705E48006C4272 /* OpaqueOrNotButton.swift */; };
 		65566CFC2770E23C006C4272 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566CFB2770E23C006C4272 /* ImageUploader.swift */; };
+		65657FAE27750DFA00FF9BF2 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65657FAD27750DFA00FF9BF2 /* QuoteService.swift */; };
+		65657FB02775109D00FF9BF2 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65657FAF2775109D00FF9BF2 /* Quote.swift */; };
+		65657FB22775140600FF9BF2 /* QuoteResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65657FB12775140600FF9BF2 /* QuoteResponseData.swift */; };
 		65B9F5C8277190FD007D7F4F /* TaggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5C7277190FD007D7F4F /* TaggingService.swift */; };
 		65B9F5CA2772202A007D7F4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5C92772202A007D7F4F /* Constants.swift */; };
 		65B9F5CE2772909E007D7F4F /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9F5CD2772909E007D7F4F /* ImageData.swift */; };
@@ -41,6 +44,9 @@
 		65566CF227704997006C4272 /* AnimationCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCase.swift; sourceTree = "<group>"; };
 		65566CF927705E48006C4272 /* OpaqueOrNotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueOrNotButton.swift; sourceTree = "<group>"; };
 		65566CFB2770E23C006C4272 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		65657FAD27750DFA00FF9BF2 /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
+		65657FAF2775109D00FF9BF2 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		65657FB12775140600FF9BF2 /* QuoteResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteResponseData.swift; sourceTree = "<group>"; };
 		65B9F5C7277190FD007D7F4F /* TaggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggingService.swift; sourceTree = "<group>"; };
 		65B9F5C92772202A007D7F4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65B9F5CD2772909E007D7F4F /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -109,8 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				65B9F5CD2772909E007D7F4F /* ImageData.swift */,
-				65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */,
 				65B9F5D12772A91D007D7F4F /* ResponseData.swift */,
+				65657FB12775140600FF9BF2 /* QuoteResponseData.swift */,
+				65B9F5DB2772DFDC007D7F4F /* ImageTag.swift */,
+				65657FAF2775109D00FF9BF2 /* Quote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 				65566CFB2770E23C006C4272 /* ImageUploader.swift */,
 				65B9F5D72772D041007D7F4F /* MultipartFormDataRequest.swift */,
 				65B9F5C7277190FD007D7F4F /* TaggingService.swift */,
+				65657FAD27750DFA00FF9BF2 /* QuoteService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -247,9 +256,12 @@
 				65B9F5DC2772DFDC007D7F4F /* ImageTag.swift in Sources */,
 				65B9F5D82772D041007D7F4F /* MultipartFormDataRequest.swift in Sources */,
 				65B9F5CA2772202A007D7F4F /* Constants.swift in Sources */,
+				65657FB22775140600FF9BF2 /* QuoteResponseData.swift in Sources */,
 				65566CFC2770E23C006C4272 /* ImageUploader.swift in Sources */,
 				65566CEA27703413006C4272 /* Extensions.swift in Sources */,
+				65657FB02775109D00FF9BF2 /* Quote.swift in Sources */,
 				65B9F5D22772A91D007D7F4F /* ResponseData.swift in Sources */,
+				65657FAE27750DFA00FF9BF2 /* QuoteService.swift in Sources */,
 				65566CC227702E04006C4272 /* AppDelegate.swift in Sources */,
 				65B9F5C8277190FD007D7F4F /* TaggingService.swift in Sources */,
 				65B9F5CE2772909E007D7F4F /* ImageData.swift in Sources */,
