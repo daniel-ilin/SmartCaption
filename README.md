@@ -10,4 +10,6 @@
 
 ### Get image descriptive tags and fitting captions
 
-![GIF](https://i.imgur.com/MLbP7gA.gif)
+![GIF](https://i.imgur.com/P9l40Xf.gif)
+
+![GIF](https://i.imgur.com/unKMnYo.gif)
