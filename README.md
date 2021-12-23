@@ -4,4 +4,4 @@
 
 **SmartCaption** app was made using MVVM architecture. All of the web requests are made using URLSession API with custom functionality built on top of it allowing to send `multipart/form-data` content in request body.
 
-![GIF](https://i.imgur.com/xHxk9ZT.gif)
+<iframe class="imgur-embed" width="100%" height="1299" frameborder="0" src="https://i.imgur.com/xHxk9ZT.gifv#embed"></iframe>
