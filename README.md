@@ -4,4 +4,10 @@
 
 **SmartCaption** app was made using MVVM architecture. All of the web requests are made using URLSession API with custom functionality built on top of it allowing to send `multipart/form-data` content in request body.
 
-![GIF](https://i.imgur.com/7u1rFLr.gif)
+### Upload photos from gallery
+
+![GIF](https://i.imgur.com/C9Jdfak.gif)
+
+### Get image descriptive tags and fitting captions
+
+![GIF](https://i.imgur.com/MLbP7gA.gif)
